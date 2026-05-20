@@ -44,11 +44,11 @@ sync_github:
     - git fetch origin +refs/heads/main:refs/remotes/origin/main
     - git checkout -B github-main refs/remotes/origin/main
     - git rm -f --ignore-unmatch .gitlab-ci.yml tags.sh llms.txt
-    - git diff --cached --quiet || git commit -m "chore: sanitize files for GitHub mirror"
+    - 'git diff --cached --quiet || git commit -m "chore: sanitize files for GitHub mirror"'
     - git push --force github "HEAD:refs/heads/main"
     - git checkout -B github-tag "${CI_COMMIT_TAG}"
     - git rm -f --ignore-unmatch .gitlab-ci.yml tags.sh llms.txt
-    - git diff --cached --quiet || git commit -m "chore: sanitize release ${CI_COMMIT_TAG} for GitHub mirror"
+    - 'git diff --cached --quiet || git commit -m "chore: sanitize release ${CI_COMMIT_TAG} for GitHub mirror"'
     - git tag -d "${CI_COMMIT_TAG}" || true
     - git tag "${CI_COMMIT_TAG}"
     - git push github ":refs/tags/${CI_COMMIT_TAG}" || true
