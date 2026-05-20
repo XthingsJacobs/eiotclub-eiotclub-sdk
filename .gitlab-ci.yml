@@ -21,7 +21,7 @@ test:
     - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
     - if: $CI_COMMIT_BRANCH
 
-sync:github:
+sync_github:
   stage: sync
   image: alpine:3.20
   needs:
